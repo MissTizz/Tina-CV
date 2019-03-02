@@ -3,7 +3,7 @@ import {ICV} from '../interfaces/services/icv';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {BasicInfo} from '../models/BasicInfo';
+import {Info} from '../models/Info';
 import {Education} from '../models/Education';
 import {Job} from '../models/Job';
 import {Experience} from '../models/Experience';
@@ -14,7 +14,7 @@ import {first, map} from 'rxjs/operators';
 })
 export class CvService implements ICV {
 
-  basicInfo = new BehaviorSubject<BasicInfo>(null);
+  basicInfo = new BehaviorSubject<Info>(null);
   isSaved = new BehaviorSubject<boolean>(true);
 
   constructor(private storage: AngularFireStorage,
@@ -22,14 +22,21 @@ export class CvService implements ICV {
   }
 
   fetchBasicInfo() {
-    return this.db.doc<BasicInfo>('cv/info').valueChanges()
+    return this.db.doc<Info>('info/ILxICIF5uG8HKmj77Qw3').valueChanges()
       .subscribe(info => {
         this.basicInfo.next(info);
       });
   }
 
   getEducation(): Observable<Education[]> {
-    return this.db.collection<Education>('educations').valueChanges();
+    return this.db.collection<Education>('education').valueChanges()
+      .pipe(
+        map(edu => {
+          return edu.sort((edua, edub) => {
+            return edub.startYear - edua.startYear;
+          });
+        })
+      );
   }
 
   getExperiences(): Observable<Experience[]> {
@@ -41,7 +48,7 @@ export class CvService implements ICV {
       .pipe(
         map(jobs => {
           return jobs.sort((joba, jobb) => {
-            return jobb.startYear - joba.startYear;
+            return jobb.startDate - joba.startDate;
           });
         })
       );
@@ -55,7 +62,7 @@ export class CvService implements ICV {
   }
 
   save() {
-    this.db.doc('cv/info').update(this.basicInfo.value);
+    this.db.doc('info/ILxICIF5uG8HKmj77Qw3').update(this.basicInfo.value);
     this.isSaved.next(true);
   }
 

@@ -1,3 +1,19 @@
-<p>
-  basic-info works!
-</p>
+<div
+  class="container"
+  fxLayout="column">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ info?.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul
+        fxLayoutGap="5px"
+        fxLayout="column">
+        <li><b>Tlf:</b> +45 {{ info?.number }}</li>
+        <li><b>Mail:</b> {{ info?.email }}</li>
+        <li><b>Bopæl:</b> {{ info?.adress }}</li>
+        <li><b>Fødselsdato:</b> {{ info?.birthday?.seconds * 1000 | date}}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>

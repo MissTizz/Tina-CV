@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
+import {ICV} from '../../shared/interfaces/services/icv';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  @Input() about: string;
+
+  isEditing = false;
+
+  constructor(@Inject('InterfaceCV') private cvService: ICV) { }
 
   ngOnInit() {
+  }
+
+  onToggleEdit(event: MouseEvent) {
+    this.isEditing = !this.isEditing;
+  }
+
+  onInitialSave(event: KeyboardEvent) {
+    // Press ctrl + enter to save locally
+    if (event.ctrlKey) {
+      const srcElement = event.srcElement as HTMLTextAreaElement;
+      this.cvService.updateAbout(srcElement.value);
+      this.isEditing = false;
+    }
   }
 
 }

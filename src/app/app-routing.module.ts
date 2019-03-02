@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {InfoComponent} from './info/info.component';
+import {CvComponent} from './cv/cv.component';
 
 const routes: Routes = [
-  {path: '', component: InfoComponent, pathMatch: 'full'}
+  {path: '', component: CvComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

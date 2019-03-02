@@ -1,5 +1,5 @@
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {BasicInfo} from '../../models/BasicInfo';
+import {Info} from '../../models/Info';
 import {Education} from '../../models/Education';
 import {Experience} from '../../models/Experience';
 import {Job} from '../../models/Job';
@@ -8,7 +8,7 @@ export interface ICV {
 
   /* Variables */
   isSaved: BehaviorSubject<boolean>;
-  basicInfo: BehaviorSubject<BasicInfo>;
+  basicInfo: BehaviorSubject<Info>;
 
   /* Read */
   /**
