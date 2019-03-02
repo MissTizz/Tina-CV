@@ -1,5 +1,5 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {ICV} from '../shared/interfaces/services/icv';
+import {ICvService} from '../shared/interfaces/services/ICvService';
 import {Education} from '../shared/models/Education';
 import {Experience} from '../shared/models/Experience';
 import {Job} from '../shared/models/Job';

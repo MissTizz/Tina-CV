@@ -1,5 +1,5 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {ICV} from '../shared/interfaces/services/icv';
+import {ICvService} from '../shared/interfaces/services/ICvService';
 import {Info} from '../shared/models/Info';
 import {Subscription} from 'rxjs';
 import {Education} from '../shared/models/Education';
@@ -23,7 +23,7 @@ export class CvComponent implements OnInit, OnDestroy {
 
   sub: Subscription;
 
-  constructor(@Inject('InterfaceCV') private cvService: ICV) { }
+  constructor(@Inject('ICvService') private cvService: ICvService) { }
 
   ngOnInit() {
     this.cvService.fetchBasicInfo();

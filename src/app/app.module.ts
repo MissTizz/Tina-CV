@@ -5,16 +5,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderComponent} from './shared/header/header.component';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatToolbarModule} from '@angular/material';
 import {BasicInfoComponent} from './basic-info/basic-info.component';
 import {CvComponent} from './cv/cv.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ExtendedInfoComponent} from './extended-info/extended-info.component';
 import {CvService} from './shared/services/cv.service';
-import {AngularFireModule} from '@angular/fire';
-import {environment} from '../environments/environment';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
-import {AngularFireStorageModule} from '@angular/fire/storage';
 import { AboutComponent } from './cv-components/about/about.component';
 import { EducationComponent } from './cv-components/education/education.component';
 import { LanguagesComponent } from './cv-components/languages/languages.component';
@@ -25,6 +20,8 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from './shared/modules/material/material.module';
 import {FirebaseModule} from './shared/modules/firebase/firebase.module';
+import {ImageCropperModule} from 'ngx-image-cropper';
+import {FileService} from './shared/services/file.service';
 
 @NgModule({
   declarations: [
@@ -48,12 +45,17 @@ import {FirebaseModule} from './shared/modules/firebase/firebase.module';
     TextFieldModule,
     ReactiveFormsModule,
     MaterialModule,
-    FirebaseModule
+    FirebaseModule,
+    ImageCropperModule
   ],
   providers: [
     {
-      provide: 'InterfaceCV',
+      provide: 'ICvService',
       useClass: CvService
+    },
+    {
+      provide: 'IFileService',
+      useClass: FileService
     }
   ],
   bootstrap: [AppComponent]

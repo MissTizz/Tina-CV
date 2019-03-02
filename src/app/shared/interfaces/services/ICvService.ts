@@ -3,8 +3,9 @@ import {Info} from '../../models/Info';
 import {Education} from '../../models/Education';
 import {Experience} from '../../models/Experience';
 import {Job} from '../../models/Job';
+import {ImageMetaData} from '../../models/ImageMetaData';
 
-export interface ICV {
+export interface ICvService {
 
   /* Variables */
   isSaved: BehaviorSubject<boolean>;
@@ -32,7 +33,7 @@ export interface ICV {
   getJobs(): Observable<Job[]>;
   /* Update */
   /**
-   * Updates BehaviorSubject in ICV
+   * Updates BehaviorSubject in ICvService
    * @param about New text in about field
    */
   updateAbout(about: string);
@@ -41,6 +42,12 @@ export interface ICV {
    * Sends the updated data to firestore
    */
   save();
+
+  /**
+   * Updates the local picture
+   * @param metaDataForImage Object containing image data
+   */
+  updatePic(metaDataForImage: ImageMetaData);
 
 
 }

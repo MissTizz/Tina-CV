@@ -9,5 +9,7 @@ export class Info {
   language: string[];
   name: string;
   number: number;
+  title: string;
+  imageUrl: string;
 }
 
