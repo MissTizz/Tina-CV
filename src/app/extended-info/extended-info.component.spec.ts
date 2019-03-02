@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReferencesComponent } from './references.component';
+import { ExtendedInfoComponent } from './extended-info.component';
 
-describe('ReferencesComponent', () => {
-  let component: ReferencesComponent;
-  let fixture: ComponentFixture<ReferencesComponent>;
+describe('ExtendedInfoComponent', () => {
+  let component: ExtendedInfoComponent;
+  let fixture: ComponentFixture<ExtendedInfoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReferencesComponent ]
+      declarations: [ ExtendedInfoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReferencesComponent);
+    fixture = TestBed.createComponent(ExtendedInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
