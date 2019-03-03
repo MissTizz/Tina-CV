@@ -71,7 +71,7 @@ export class CvService implements ICvService {
         const id = fullPath.substr(fullPath.lastIndexOf('/'));
         this.fileService.getFileUrl(id)
           .subscribe(url => {
-            this.db.doc('cv/info').update({imageUrl: url});
+            this.db.doc('info/ILxICIF5uG8HKmj77Qw3').update({imageUrl: url});
           });
       });
     this.db.doc('info/ILxICIF5uG8HKmj77Qw3').update(this.basicInfo.value);
